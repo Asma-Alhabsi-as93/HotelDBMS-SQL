@@ -22,7 +22,7 @@ public class Hotel {
 		Scanner sc = new Scanner(System.in);
 		String sqlDB = "CREATE TABLE Hotel" + "(id INTEGER ," + " hotel_name VARCHAR(8) not NULL,"
 				+ "hotel_location varchar(20)," + "created_date Date not NULL," + "updated_date Date,"
-				+ "is_Active  BIT not NULL," + "PRIMARY KEY (id))";
+				+ "is_Active  BIT not NULL," + "PRIMARY KEY AUTO_INCREMENT (id))";
 
 		Connection conn = null;
 		try {
@@ -50,52 +50,10 @@ public class Hotel {
 	
 	
 	
-	public static void insert1hotel() throws Throwable{
-		String url = "jdbc:mysql://localhost:3306/HotelDBMS";
-		//String url = "jdbc:mysql://localhost:3306/stu_sql";
-		String username = "root";
-		String password = "root";
-		 try(Connection conn = DriverManager.getConnection( url, username, password );
-		         Statement stmt = conn.createStatement();
-		      ) {	
-			 Scanner scanner = new Scanner(System.in);
-
-			 
-			 System.out.println("enter ID no");
-		        Integer id = scanner.nextInt();
-		        
-		        System.out.println("enter hotel name");
-		        String hotel_name = scanner.next();
-		        
-		        System.out.println("enter hotel location");
-		        String hotel_location = scanner.next();
-		        
-		        System.out.println("created_date");
-		        String created_date= scanner.next();
-		        
-		        
-		        System.out.println("updated_date");
-		        String updated_date= scanner.next();
-		        
-		        System.out.println("is Active");
-		        Boolean is_Active= scanner.nextBoolean();
-		        
-			 String sql = "INSERT INTO STUDENTS VALUES ("+id+",'"+hotel_name+"','" + hotel_location+"','"+created_date+"','"+updated_date+"','"+is_Active+"')";
-	       
-	         int m = stmt.executeUpdate(sql);
-	            if (m >=  1) 
-	                System.out.println(
-	                        "inserted successfully : " + sql);
-	            else 
-	                System.out.println("insertion failed");
-	                
-	            
-	      } 
-		 }
+	
 
 	public static void insertIntoTable(int number) throws Throwable {
 
-		
 		String hotel_name = "majaan";
 		String hotel_location = "muscat";
 		Date created_date = new Date(System.currentTimeMillis());
@@ -111,7 +69,7 @@ public class Hotel {
 			conn = DriverManager.getConnection(url, username, password);
 			for (int i = 0; i <= number; i++) {
 
-				String insert1 = "Insert into Hotel values(" + i + NumberToAdd + ",'" + hotel_name + "','"
+				String insert1 = "Insert into Hotel values(" + i  + ",'" + hotel_name + "','"
 						+ hotel_location + "','" + created_date + "','" + updated_date + "'," + 1 + ")";
 				System.out.println(insert1);
 
@@ -293,6 +251,9 @@ public class Hotel {
 		System.exit (0);
 		System.out.println("**************");
 	}
+	
+	
+	
 }
 	
 	

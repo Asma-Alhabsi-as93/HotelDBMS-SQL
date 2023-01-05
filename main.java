@@ -22,7 +22,12 @@ public class main {
 
 			switch (select) {
 			case 0:
-				 Hotel.HotelTable();
+				 //Hotel.HotelTable();
+				// Room_Type.room_type();
+				//Rooms.room();
+				 //Guests.Guests();
+				//Employee_Type.Employee_Type();
+				//Employees.Employees();
 				break;
 			case 1:
 //		 HotelTable();
@@ -52,6 +57,11 @@ public class main {
 			case 6:
 				Hotel.exit();
 				break;
+				
+				
+//			case 7:
+//				Hotel.deleteById();
+//				break;
 			}
 		} while (hasExit);
 	}
