@@ -4,11 +4,13 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.Driver;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Hotel {
 	static String url = "jdbc:mysql://localhost:3306/HotelDBMS";
@@ -44,12 +46,56 @@ public class Hotel {
 		}
 		return false;
 	}
+	
+	
+	
+	
+	public static void insert1hotel() throws Throwable{
+		String url = "jdbc:mysql://localhost:3306/HotelDBMS";
+		//String url = "jdbc:mysql://localhost:3306/stu_sql";
+		String username = "root";
+		String password = "root";
+		 try(Connection conn = DriverManager.getConnection( url, username, password );
+		         Statement stmt = conn.createStatement();
+		      ) {	
+			 Scanner scanner = new Scanner(System.in);
 
-	public static void insertIntoTable() throws Throwable {
+			 
+			 System.out.println("enter ID no");
+		        Integer id = scanner.nextInt();
+		        
+		        System.out.println("enter hotel name");
+		        String hotel_name = scanner.next();
+		        
+		        System.out.println("enter hotel location");
+		        String hotel_location = scanner.next();
+		        
+		        System.out.println("created_date");
+		        String created_date= scanner.next();
+		        
+		        
+		        System.out.println("updated_date");
+		        String updated_date= scanner.next();
+		        
+		        System.out.println("is Active");
+		        Boolean is_Active= scanner.nextBoolean();
+		        
+			 String sql = "INSERT INTO STUDENTS VALUES ("+id+",'"+hotel_name+"','" + hotel_location+"','"+created_date+"','"+updated_date+"','"+is_Active+"')";
+	       
+	         int m = stmt.executeUpdate(sql);
+	            if (m >=  1) 
+	                System.out.println(
+	                        "inserted successfully : " + sql);
+	            else 
+	                System.out.println("insertion failed");
+	                
+	            
+	      } 
+		 }
 
-		Scanner sc = new Scanner(System.in);
-		System.out.println(" how many users you have to print");
-		int insert = sc.nextInt();
+	public static void insertIntoTable(int number) throws Throwable {
+
+		
 		String hotel_name = "majaan";
 		String hotel_location = "muscat";
 		Date created_date = new Date(System.currentTimeMillis());
@@ -63,7 +109,7 @@ public class Hotel {
 			Driver driver = (Driver) Class.forName("com.mysql.jdbc.Driver").newInstance();
 			DriverManager.registerDriver(driver);
 			conn = DriverManager.getConnection(url, username, password);
-			for (int i = 1; i <= 100; i++) {
+			for (int i = 0; i <= number; i++) {
 
 				String insert1 = "Insert into Hotel values(" + i + NumberToAdd + ",'" + hotel_name + "','"
 						+ hotel_location + "','" + created_date + "','" + updated_date + "'," + 1 + ")";
@@ -118,6 +164,40 @@ public class Hotel {
 		}
 	}
 
+	public static void printHotel(int top) {
+		String url = "jdbc:mysql://localhost:3306/HotelDBMS";
+		String user = "root";
+		String pass = "root";
+		Connection con = null;
+		try {
+			Driver driver = (Driver) Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			// Registering drivers
+			DriverManager.registerDriver(driver);
+			// Reference to connection interface
+			con = DriverManager.getConnection(url, user, pass);
+			// Creating a statement
+			Statement st = con.createStatement();
+			Scanner scanner = new Scanner(System.in);
+			int count = 1;
+			String sql="SELECT * FROM Hotel ORDER BY id LIMIT "+top;
+			ResultSet rs = st.executeQuery(sql);
+			while (rs.next() && count <= top) {
+				int id = rs.getInt("id");
+
+				String hotelname = rs.getString("hotel_name");
+				String hotellocation = rs.getString("hotel_location");
+				Date createddate = rs.getDate("created_date");
+				Date updateddate = rs.getDate("updated_date");
+				boolean isActive = rs.getBoolean("is_Active");
+				System.out.println(id + " " + hotelname + " " + hotellocation + " " + createddate + " " + updateddate
+						+ " " + isActive);
+				count++;
+			}
+		} catch (Exception ex) {
+			System.err.println(ex);
+		}
+	}
+
 	public static void updateById() {
 		String url = "jdbc:mysql://localhost:3306/HotelDBMS";
 		String user = "root";
@@ -142,7 +222,36 @@ public class Hotel {
 
 			String sql = "UPDATE hotel SET hotel_name='" + hotelname + "',hotel_location='" + hotellocatin
 					+ "' WHERE id='" + userinput + "'";
-			ResultSet result = st.executeQuery(sql);
+			int result = st.executeUpdate(sql);
+		} catch (Exception ex) {
+			System.err.println(ex);
+
+		}
+
+	}
+	
+	public static void makeIsActiveFalseById() {
+		String url = "jdbc:mysql://localhost:3306/HotelDBMS";
+		String user = "root";
+		String pass = "root";
+		Scanner scanner = new Scanner(System.in);
+
+		Connection conn = null;
+		try {
+			Driver driver = (Driver) Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			DriverManager.registerDriver(driver);
+			// Reference to connection interface
+			conn = DriverManager.getConnection(url, user, pass);
+			// Creating a statement
+			Statement st = conn.createStatement();
+
+			System.out.println("Please Enter any id to Update hotel data :");
+			int userinput = scanner.nextInt();
+			
+			
+
+			String sql = "UPDATE hotel SET is_Active =false WHERE id<=" + userinput ;
+			int result = st.executeUpdate(sql);
 		} catch (Exception ex) {
 			System.err.println(ex);
 
@@ -150,44 +259,43 @@ public class Hotel {
 
 	}
 
-	public static void main(String[] args) throws Throwable {
-		// TODO Auto-generated method stub
-		Scanner sc = new Scanner(System.in);
-		boolean hasExit = true;
-		do {
-			System.out.println("1:insertIntoTable");
-			System.out.println("2:getById");
-			System.out.println("3: updateById");
-			System.out.println("4:deleteById");
-			System.out.println("5:makeIsActiveFalseById");
+	
+	public static void deleteById() {
+		String url = "jdbc:mysql://localhost:3306/HotelDBMS";
+		String user = "root";
+		String pass = "root";
+		Scanner scanner = new Scanner(System.in);
+
+		Connection conn = null;
+		try {
+			Driver driver = (Driver) Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			DriverManager.registerDriver(driver);
+			// Reference to connection interface
+			conn = DriverManager.getConnection(url, user, pass);
+			// Creating a statement
+			Statement st = conn.createStatement();
+			int inputid=scanner.nextInt();
+			String sql = "select * from hotel where id='" + inputid + "'";
 			
-			int select = sc.nextInt();
+			int rs = st.executeUpdate(sql);
 
-			switch (select) {
-			case 1:
-//		 HotelTable();
-//		 
-				insertIntoTable();
-//				
-				break;
-
-			case 2:
-				getById();
-				break;
-			case 3:
-				 updateById();
-				break;
-
-			case 4:
-				 //updateById(); 
-				break;
-
-			case 5:
-				Employee_Type.Employee_Type();
-				break;
-			
-			}
-		} while (hasExit);
+		      // execute the preparedstatement
+		      
+		      conn.close();
+		   
+	} catch (Exception ex) {
+		System.err.println(ex);
 	}
-
 }
+	public static void exit() {
+		System.out.println("**************");
+		System.out.println("Thank You");
+		System.exit (0);
+		System.out.println("**************");
+	}
+}
+	
+	
+	//public static void makeIsActiveFalseById() {
+
+	
