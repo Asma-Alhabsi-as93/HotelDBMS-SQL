@@ -47,13 +47,13 @@ public class Room_Type {
 			}
 			return false;
 }
-	public static void readFromTable(){
+	public static void readFromTable(int reed){
 		String url = "jdbc:mysql://localhost:3306/HotelDBMS";
 		String username = "root";
 		String password = "root";
 		 Scanner sc = new Scanner(System.in);
 		 System.out.println(" how many users you have to print");
-		 String SQL="SELECT * FROM room_type ORDER BY id LIMIT 10;";
+		 String SQL="SELECT * FROM room_type ORDER BY id LIMIT "+reed+"";
 			Connection conn = null;
 			try {
 				Driver driver = (Driver) Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -83,7 +83,7 @@ public class Room_Type {
 		String username = "root";
 		String password = "root";
 		 Scanner sc = new Scanner(System.in);
-	String room_type = "king room";
+	String room_type = "STANDARD";
 	Date created_date = new Date(System.currentTimeMillis());
 	Date updated_date = new Date(System.currentTimeMillis());
 	boolean is_Active = true;

@@ -18,7 +18,7 @@ public class Employees {
 		 String sqlDB = "CREATE TABLE Employees"
 		         +"(id INTEGER,"
 				 +"employee_type_id INTEGER "+" REFERENCES Employee_Type(id),"
-				+"room_id INTEGER "+" REFERENCES Hotel(id)," 
+				+"room_id INTEGER "+" REFERENCES room(id)," 
 				 +"updated_date Date,"
 				+"created_date Date not null,"
 				+"is_Active Boolean not NULL,"
@@ -65,7 +65,12 @@ public class Employees {
 		conn = DriverManager.getConnection(url, username, password);
 		for (int i = 0; i <= number; i++) {
 
-			String insert1 = "Insert into Employees values(" + i  + ",'" +employee_type_id+ "',"+ room_id +",'"+created_date+"','" + updated_date + "'," + 1 + ")";
+			String insert1 = "Insert into Employees values(" + i  + ""
+					+ ",'" +employee_type_id+ "'"
+					+ ","+ room_id +""
+					+ ",'"+created_date+"'"
+					+ ",'" + updated_date + "'"
+					+ "," + 1 + ")";
 			System.out.println(insert1);
 
 			Statement st = conn.createStatement();

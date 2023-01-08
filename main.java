@@ -25,15 +25,15 @@ public class main {
 //				Hotel.HotelTable();
 				 //Room_Type.room_type();
 //				Rooms.room();
-//				 Guests.Guests();
+				 Guests.Guests();
 //				Employee_Type.Employee_Type();
-				Employees.Employees();
+//				Employees.Employees();
 				break;
 			case 1:
 //		 HotelTable();
 				System.out.println(" how many users you have to print");
 				int number = sc.nextInt();
-				Hotel.insertIntoTable(number);
+//				Hotel.insertIntoTable(number);
 //				Room_Type.insertIntoTable(number);
 //				Rooms.insertIntoTable(number);
 //				Guests.insertIntoTable(number);
@@ -42,12 +42,12 @@ public class main {
 				break;
 
 			case 2:
-				Hotel.insertIntoTable(1);
+//				Hotel.insertIntoTable(1);
 //				Room_Type.insertIntoTable(3);
 //				Rooms.insertIntoTable(1);
-//				Guests.insertIntoTable(1);
-//				Employees.insertIntoTable(1);
-//				Employee_Type.insertIntoTable(1);
+				Guests.insertIntoTable(1);
+//				Employees.insertIntoTable(20);
+//				Employee_Type.insertIntoTable(1000);
 				break;
 			case 3:
 				Hotel. printHotel(10);
@@ -83,9 +83,13 @@ public class main {
 				break;
 				
 				
-//			case 7:
+			case 7:
 //				Hotel.deleteById();
-//				break;
+				//Guests.readFromTable();
+				System.out.println(" how many users you have to input");
+				int top1 = sc.nextInt();
+				Room_Type.readFromTable(top1);
+			break;
 			}
 		} while (hasExit);
 	}

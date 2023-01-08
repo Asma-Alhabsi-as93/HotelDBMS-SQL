@@ -48,13 +48,13 @@ public class Guests {
 			return false;
 }
 	
-	public static void readFromTable(){
+	public static void readFromTable(int reed){
 		String url = "jdbc:mysql://localhost:3306/HotelDBMS";
 		String username = "root";
 		String password = "root";
 		 Scanner sc = new Scanner(System.in);
 		 System.out.println(" how many users you have to print");
-		 String SQL="SELECT * FROM Guests ORDER BY id LIMIT 10;";
+		 String SQL="SELECT * FROM Guests ORDER BY id LIMIT reed";
 			Connection conn = null;
 			try {
 				Driver driver = (Driver) Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -89,9 +89,9 @@ public class Guests {
 		 Scanner sc = new Scanner(System.in);
 	String guest_name = "king room";
 	String guest_phone = "+997999000";
-	String guest_accompanying_members = "king room";
-	int room_id = 4;
-	int hotel_id = 5;
+	int guest_accompanying_members = 5;
+	int room_id = 1;
+	int hotel_id = 1;
 	Date created_date = new Date(System.currentTimeMillis());
 	Date updated_date = new Date(System.currentTimeMillis());
 	boolean is_Active = true;
@@ -106,8 +106,15 @@ public class Guests {
 		conn = DriverManager.getConnection(url, username, password);
 		for (int i = 0; i <= number; i++) {
 
-			String insert1 = "Insert into Guests values(" + i  + ",'" +guest_name + "','" +guest_phone + "','" +guest_accompanying_members + "'," +room_id + "','" +hotel_id  + "','"
-					  + created_date + "','" + updated_date + "'," + 1 + ")";
+			String insert1 = "Insert into Guests values(" + NumberToAdd 
+					+ ",'" +guest_name + "'"
+					+ ",'" +guest_phone + "'"
+					+ ",'" +guest_accompanying_members + "'"
+					+ "," +room_id + ""
+					+ "," +hotel_id  + ""
+				+ ",'" + created_date + "'" 
+					 + ",'" + updated_date + "'"
+					  + "," + 1 + ")";
 			System.out.println(insert1);
 
 			Statement st = conn.createStatement();
