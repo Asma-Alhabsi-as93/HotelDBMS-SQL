@@ -88,15 +88,15 @@ public class Guests {
 		String password = "root";
 		 Scanner sc = new Scanner(System.in);
 	String guest_name = "king room";
-	String guest_phone = "king room";
+	String guest_phone = "+997999000";
 	String guest_accompanying_members = "king room";
 	int room_id = 4;
 	int hotel_id = 5;
 	Date created_date = new Date(System.currentTimeMillis());
 	Date updated_date = new Date(System.currentTimeMillis());
 	boolean is_Active = true;
-	System.out.println(" how many users you have to print");
-	int number1 = sc.nextInt();
+//	System.out.println(" how many users you have to print");
+//	int number1 = sc.nextInt();
 	Random rn = new Random();
 	Integer NumberToAdd = rn.nextInt(100);
 	Connection conn = null;
@@ -146,21 +146,57 @@ public class Guests {
 				int id = rs.getInt("id");
 
 				String guest_name = rs.getString("guest_name");
-				String guest_phone = rs.getString("guest_phone");
-				String guest_accompanying_members = rs.getString("guest_accompanying_members");
-				int room_id = rs.getInt("room_id");
-				int hotel_id =  rs.getInt("hotel_id");
+				String guest_phone= rs.getString("guest_phone");
+				String guest_accompanying_members=rs.getString("guest_accompanying_members");
+				int room_id=rs.getInt("room_id");
+				int hotel_id=rs.getInt("hotel_id");
 				Date createddate = rs.getDate("created_date");
 				Date updateddate = rs.getDate("updated_date");
 				boolean isActive = rs.getBoolean("is_Active");
-				System.out.println(id + " " +guest_name +  " " + guest_phone + " " + guest_accompanying_members
-						+ " "+room_id+" "+hotel_id+" "+ created_date +" "+updated_date+" "is_Active);
+				System.out.println(id + " " + guest_name +" "+ guest_phone +""+guest_accompanying_members+" "+room_id+" "+" "+hotel_id+" "+" " + createddate + " " + updateddate
+						+ " " + isActive);
 				count++;
 			}
 		} catch (Exception ex) {
 			System.err.println(ex);
 		}
 	}
+	
+	public static void printGuests(int top) {
+		String url = "jdbc:mysql://localhost:3306/HotelDBMS";
+		String user = "root";
+		String pass = "root";
+		Connection con = null;
+		try {
+			Driver driver = (Driver) Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			// Registering drivers
+			DriverManager.registerDriver(driver);
+			// Reference to connection interface
+			con = DriverManager.getConnection(url, user, pass);
+			// Creating a statement
+			Statement st = con.createStatement();
+			Scanner scanner = new Scanner(System.in);
+			int count = 1;
+			String sql="SELECT * FROM Guests ORDER BY id LIMIT "+top;
+			ResultSet rs = st.executeQuery(sql);
+			while (rs.next() && count <= top) {
+				int id = rs.getInt("id");
+
+				String guest_name = rs.getString("guest_name");
+				int room_id=rs.getInt("room_id");
+				int hotel_id=rs.getInt("hotel_id");
+				Date createddate = rs.getDate("created_date");
+				Date updateddate = rs.getDate("updated_date");
+				boolean isActive = rs.getBoolean("is_Active");
+				System.out.println(id + " " + guest_name +" "+room_id+" "+ hotel_id+"  " + createddate + " " + updateddate
+						+ " " + isActive);
+				count++;
+			}
+		} catch (Exception ex) {
+			System.err.println(ex);
+		}
+	}
+	
 	
 	public static void updateById() {
 		String url = "jdbc:mysql://localhost:3306/HotelDBMS";

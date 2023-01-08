@@ -22,36 +22,60 @@ public class main {
 
 			switch (select) {
 			case 0:
-				 //Hotel.HotelTable();
-				// Room_Type.room_type();
-				//Rooms.room();
-				 //Guests.Guests();
-				//Employee_Type.Employee_Type();
-				//Employees.Employees();
+//				Hotel.HotelTable();
+				 //Room_Type.room_type();
+//				Rooms.room();
+//				 Guests.Guests();
+//				Employee_Type.Employee_Type();
+				Employees.Employees();
 				break;
 			case 1:
 //		 HotelTable();
 				System.out.println(" how many users you have to print");
-				int number1 = sc.nextInt();
-				Hotel.insertIntoTable(number1);
-//				
+				int number = sc.nextInt();
+				Hotel.insertIntoTable(number);
+//				Room_Type.insertIntoTable(number);
+//				Rooms.insertIntoTable(number);
+//				Guests.insertIntoTable(number);
+//				Employees.insertIntoTable(number);
+//				Employee_Type.insertIntoTable(number);
 				break;
 
 			case 2:
 				Hotel.insertIntoTable(1);
+//				Room_Type.insertIntoTable(3);
+//				Rooms.insertIntoTable(1);
+//				Guests.insertIntoTable(1);
+//				Employees.insertIntoTable(1);
+//				Employee_Type.insertIntoTable(1);
 				break;
 			case 3:
 				Hotel. printHotel(10);
+//				Room_Type.printRoom_Type(10);
+//				Rooms.printRoom(10);
+//				Guests.printGuests(10);
+//				Employees.printHotel(10);
+//				Employee_Type.printHotel(10);
 				break;
 
 			case 4:
 				Hotel.makeIsActiveFalseById(); 
+//				Room_Type.makeIsActiveFalseById();
+//				Rooms.makeIsActiveFalseById();
+//				Guests.makeIsActiveFalseById();
+//				Employees.makeIsActiveFalseById();
+//				Employee_Type.makeIsActiveFalseById();
 				break;
 
 			case 5:
 				System.out.println(" how many users you have to input");
 				int top = sc.nextInt();
 				Hotel.printHotel(top);
+//				Room_Type.printRoom_Type(top);
+//				Rooms.printRoom(top);
+//				Guests.printGuests(top);
+//				Employees.printHotel(top);
+//				Employee_Type.printHotel(top);
 				break;
 			
 			case 6:

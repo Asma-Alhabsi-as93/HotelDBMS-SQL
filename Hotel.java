@@ -69,7 +69,9 @@ public class Hotel {
 			conn = DriverManager.getConnection(url, username, password);
 			for (int i = 0; i <= number; i++) {
 
-				String insert1 = "Insert into Hotel values(" + i  + ",'" + hotel_name + "','"
+				String insert1 = "Insert into Hotel values(" + i  
+						
+						+ ",'" + hotel_name + "','"
 						+ hotel_location + "','" + created_date + "','" + updated_date + "'," + 1 + ")";
 				System.out.println(insert1);
 

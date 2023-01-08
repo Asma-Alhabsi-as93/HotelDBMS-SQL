@@ -54,8 +54,8 @@ public class Employee_Type {
 	Date created_date = new Date(System.currentTimeMillis());
 	Date updated_date = new Date(System.currentTimeMillis());
 	boolean is_Active = true;
-	System.out.println(" how many users you have to print");
-	int number1 = sc.nextInt();
+//	System.out.println(" how many users you have to print");
+//	int number1 = sc.nextInt();
 	Random rn = new Random();
 	Integer NumberToAdd = rn.nextInt(100);
 	Connection conn = null;
@@ -199,7 +199,7 @@ public class Employee_Type {
 			// Creating a statement
 			Statement st = conn.createStatement();
 
-			System.out.println("Please Enter any id to Update hotel data :");
+			System.out.println("Please Enter any id to Update employee_type data :");
 			int userinput = scanner.nextInt();
 			
 			

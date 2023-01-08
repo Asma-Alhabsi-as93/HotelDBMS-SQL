@@ -17,12 +17,12 @@ public class Room_Type {
 		 Scanner sc = new Scanner(System.in);
 		 String sqlDB = "CREATE TABLE room_type"
 		         +"(id INTEGER , "
-				 +" room_type_name VARCHAR(8) not NULL, "
+				 +" room_type VARCHAR(100) not NULL, "
 				+"created_date Date ," 
 				 +"updated_date Date,"
 				+"is_Active  Boolean not NULL,"
 				 +"PRIMARY KEY  AUTO_INCREMENT(id))";
-		 String insert ="Insert into room_type values(1,'doble','2002-02-20','2003-02-02',true)";
+//		 String insert ="Insert into room_type values(1,'doble','2002-02-20','2003-02-02',true)";
 		 
 		 Connection conn = null;
 			try {
@@ -31,13 +31,13 @@ public class Room_Type {
 				conn = DriverManager.getConnection(url,username, password);
 				Statement st = conn.createStatement();
 				int m = st.executeUpdate(sqlDB);
-				int s = st.executeUpdate(insert);
-				if ((m >= 0)&&(s>=1)){
+//				int s = st.executeUpdate(insert);
+				if ((m >= 0)){
 					System.out.println("Created table in given database...");
-					System.out.println("inserted Successfully...");
+//					System.out.println("inserted Successfully...");
 				} else {
 					System.out.println(" table already Created in given database...");
-					System.out.println("insertion failed...");
+//					System.out.println("insertion failed...");
 					return true;
 				}
 				conn.close();
@@ -64,7 +64,7 @@ public class Room_Type {
 				 while(m.next()){
 			            //Display values
 			            System.out.print("ID: " + m.getInt("id"));
-			            System.out.print(", room_type_name: " + m.getString("room_type_name"));
+			            System.out.print(", room_type: " + m.getString("room_type"));
 			            System.out.print(", created_date: " + m.getDate("created_date"));
 			            System.out.println(", updated_date: " + m.getDate("updated_date"));
 			            System.out.println(", is_Active: " + m.getBoolean("is_Active"));
@@ -83,12 +83,12 @@ public class Room_Type {
 		String username = "root";
 		String password = "root";
 		 Scanner sc = new Scanner(System.in);
-	String room_type_name = "king room";
+	String room_type = "king room";
 	Date created_date = new Date(System.currentTimeMillis());
 	Date updated_date = new Date(System.currentTimeMillis());
 	boolean is_Active = true;
-	System.out.println(" how many users you have to print");
-	int number1 = sc.nextInt();
+//	System.out.println(" how many users you have to print");
+//	int number1 = sc.nextInt();
 	Random rn = new Random();
 	Integer NumberToAdd = rn.nextInt(100);
 	Connection conn = null;
@@ -98,7 +98,7 @@ public class Room_Type {
 		conn = DriverManager.getConnection(url, username, password);
 		for (int i = 0; i <= number; i++) {
 
-			String insert1 = "Insert into room_type values(" + i  + ",'" + room_type_name + "','"
+			String insert1 = "Insert into room_type values(" + i  + ",'" + room_type + "','"
 					  + created_date + "','" + updated_date + "'," + 1 + ")";
 			System.out.println(insert1);
 
@@ -137,12 +137,12 @@ public static void getById() {
 		while (rs.next() && count <= inputid) {
 			int id = rs.getInt("id");
 
-			String room_type_name = rs.getString("room_type_name");
+			String room_type = rs.getString("room_type");
 			
 			Date createddate = rs.getDate("created_date");
 			Date updateddate = rs.getDate("updated_date");
 			boolean isActive = rs.getBoolean("is_Active");
-			System.out.println(id + " " + room_type_name +  " " + createddate + " " + updateddate
+			System.out.println(id + " " + room_type +  " " + createddate + " " + updateddate
 					+ " " + isActive);
 			count++;
 		}
@@ -171,11 +171,11 @@ public static void printRoom_Type(int top) {
 		while (rs.next() && count <= top) {
 			int id = rs.getInt("id");
 
-			String room_type_name = rs.getString("room_type_name");
+			String room_type = rs.getString("room_type");
 			Date createddate = rs.getDate("created_date");
 			Date updateddate = rs.getDate("updated_date");
 			boolean isActive = rs.getBoolean("is_Active");
-			System.out.println(id + " " + room_type_name + "  " + createddate + " " + updateddate
+			System.out.println(id + " " + room_type + "  " + createddate + " " + updateddate
 					+ " " + isActive);
 			count++;
 		}
@@ -203,10 +203,10 @@ public static void updateById() {
 		System.out.println("Please Enter any id to Update room type data :");
 		int userinput = scanner.nextInt();
 		System.out.println("Please Enter the new room_type name:");
-		String room_type_name  = scanner.next();
+		String room_type  = scanner.next();
 		
 
-		String sql = "UPDATE room_type SET room_type_name='" + room_type_name + "';"
+		String sql = "UPDATE room_type SET room_type_name='" + room_type + "';"
 				+ "' WHERE id='" + userinput + "'";
 		int result = st.executeUpdate(sql);
 	} catch (Exception ex) {
