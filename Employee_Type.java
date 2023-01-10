@@ -49,8 +49,8 @@ public class Employee_Type {
 		String username = "root";
 		String password = "root";
 		 Scanner sc = new Scanner(System.in);
-	String employee_type_name = "Ahamed";
-	String hotel_location = "gubrah";
+	String employee_type_name = "DIRECTOR";
+	String hotel_location = "aziaba";
 	Date created_date = new Date(System.currentTimeMillis());
 	Date updated_date = new Date(System.currentTimeMillis());
 	boolean is_Active = true;
@@ -65,7 +65,8 @@ public class Employee_Type {
 		conn = DriverManager.getConnection(url, username, password);
 		for (int i = 0; i <= number; i++) {
 
-			String insert1 = "Insert into Employee_Type values(" + i  + ",'" + employee_type_name + "','" + hotel_location + "','"
+			String insert1 = "Insert into Employee_Type(employee_type_name,hotel_location ,created_date,updated_date,is_Active  ) "
+					+ "values('" + employee_type_name + "','" + hotel_location + "','"
 					  + created_date + "','" + updated_date + "'," + 1 + ")";
 			System.out.println(insert1);
 

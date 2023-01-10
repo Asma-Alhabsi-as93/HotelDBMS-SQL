@@ -50,7 +50,7 @@ public class Employees {
 		String password = "root";
 		 Scanner sc = new Scanner(System.in);
 	int employee_type_id  = 1;
-	int room_id  = 1;
+	int room_id  = 2;
 	Date created_date = new Date(System.currentTimeMillis());
 	Date updated_date = new Date(System.currentTimeMillis());
 	boolean is_Active = true;
@@ -65,8 +65,8 @@ public class Employees {
 		conn = DriverManager.getConnection(url, username, password);
 		for (int i = 0; i <= number; i++) {
 
-			String insert1 = "Insert into Employees values(" + i  + ""
-					+ ",'" +employee_type_id+ "'"
+			String insert1 = "Insert into Employees(employee_type_id,room_id,updated_date,created_date,is_Active ) "
+					+ "values(" +employee_type_id+ ""
 					+ ","+ room_id +""
 					+ ",'"+created_date+"'"
 					+ ",'" + updated_date + "'"

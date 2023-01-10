@@ -10,12 +10,12 @@ public class main {
 		do {
 			System.out.println("HELLO IN HOTELS");
 			System.out.println("*****************");
-			System.out.println("1:Insert 10,000 hotels");
-			System.out.println("2:Insert 1 hotel");
-			System.out.println("3:Print 10 hotels");
+			System.out.println("1:Insert 10,000 ");
+			System.out.println("2:Insert 1 ");
+			System.out.println("3:Print 10 ");
 			System.out.println("4:Make first 10 hotels 'is_Active' = false");
 			System.out.println("5Print hotel information by user input");
-			System.out.println("6:^^EXIT^^");
+			System.out.println("6:Guests who's name end with 'E'");
 			System.out.println("*******************");
 			
 			int select = sc.nextInt();
@@ -23,9 +23,9 @@ public class main {
 			switch (select) {
 			case 0:
 //				Hotel.HotelTable();
-				 //Room_Type.room_type();
+				 Room_Type.room_type();
 //				Rooms.room();
-				 Guests.Guests();
+//				 Guests.Guests();
 //				Employee_Type.Employee_Type();
 //				Employees.Employees();
 				break;
@@ -35,8 +35,8 @@ public class main {
 				int number = sc.nextInt();
 //				Hotel.insertIntoTable(number);
 //				Room_Type.insertIntoTable(number);
-//				Rooms.insertIntoTable(number);
-//				Guests.insertIntoTable(number);
+//			Rooms.insertIntoTable(number);
+				Guests.insertIntoTable(number);
 //				Employees.insertIntoTable(number);
 //				Employee_Type.insertIntoTable(number);
 				break;
@@ -45,7 +45,7 @@ public class main {
 //				Hotel.insertIntoTable(1);
 //				Room_Type.insertIntoTable(3);
 //				Rooms.insertIntoTable(1);
-				Guests.insertIntoTable(1);
+//				Guests.insertIntoTable(1000);
 //				Employees.insertIntoTable(20);
 //				Employee_Type.insertIntoTable(1000);
 				break;
@@ -77,19 +77,24 @@ public class main {
 //				Employees.printHotel(top);
 //				Employee_Type.printHotel(top);
 				break;
-			
+				
 			case 6:
-				Hotel.exit();
+				HotelManagement.guest();
 				break;
-				
-				
-			case 7:
-//				Hotel.deleteById();
-				//Guests.readFromTable();
-				System.out.println(" how many users you have to input");
-				int top1 = sc.nextInt();
-				Room_Type.readFromTable(top1);
-			break;
+			
+//			case 6:
+//				Hotel.exit();
+//				break;
+//			
+//				
+//				
+//			case 7:
+////				Hotel.deleteById();
+//				//Guests.readFromTable();
+//				System.out.println(" how many users you have to input");
+//				int top1 = sc.nextInt();
+//				Room_Type.readFromTable(top1);
+//			break;
 			}
 		} while (hasExit);
 	}

@@ -82,16 +82,16 @@ public class Guests {
 		 
 			}
 	
-	public static void insertIntoTable(int number) throws Throwable {
+	public static void insertIntoTable(long number) throws Throwable {
 		String url = "jdbc:mysql://localhost:3306/HotelDBMS";
 		String username = "root";
 		String password = "root";
 		 Scanner sc = new Scanner(System.in);
-	String guest_name = "king room";
-	String guest_phone = "+997999000";
-	int guest_accompanying_members = 5;
-	int room_id = 1;
-	int hotel_id = 1;
+	String guest_name = "ameele";
+	String guest_phone = "+96560";
+	int guest_accompanying_members = 29;
+	int room_id = 7;
+	int hotel_id = 2;
 	Date created_date = new Date(System.currentTimeMillis());
 	Date updated_date = new Date(System.currentTimeMillis());
 	boolean is_Active = true;
@@ -104,12 +104,12 @@ public class Guests {
 		Driver driver = (Driver) Class.forName("com.mysql.jdbc.Driver").newInstance();
 		DriverManager.registerDriver(driver);
 		conn = DriverManager.getConnection(url, username, password);
-		for (int i = 0; i <= number; i++) {
+		for (long i = 0; i <= number; i++) {
 
-			String insert1 = "Insert into Guests values(" + NumberToAdd 
-					+ ",'" +guest_name + "'"
+			String insert1 = "Insert into Guests (guest_name ,guest_phone,guest_accompanying_members ,room_id ,hotel_id ,created_date ,updated_date ,is_Active)"
+					+ "values('" +guest_name + "'"
 					+ ",'" +guest_phone + "'"
-					+ ",'" +guest_accompanying_members + "'"
+					+ ",'" +guest_accompanying_members*50 + "'"
 					+ "," +room_id + ""
 					+ "," +hotel_id  + ""
 				+ ",'" + created_date + "'" 

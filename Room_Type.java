@@ -83,7 +83,7 @@ public class Room_Type {
 		String username = "root";
 		String password = "root";
 		 Scanner sc = new Scanner(System.in);
-	String room_type = "STANDARD";
+	String room_type = "SUITE";
 	Date created_date = new Date(System.currentTimeMillis());
 	Date updated_date = new Date(System.currentTimeMillis());
 	boolean is_Active = true;
@@ -98,8 +98,11 @@ public class Room_Type {
 		conn = DriverManager.getConnection(url, username, password);
 		for (int i = 0; i <= number; i++) {
 
-			String insert1 = "Insert into room_type values(" + i  + ",'" + room_type + "','"
-					  + created_date + "','" + updated_date + "'," + 1 + ")";
+			String insert1 = "Insert into room_type( room_type, created_date, updated_date,is_Active )"
+					+ "values('" + room_type + "'"
+					+ ",'"  + created_date + "'"
+					+ ",'" + updated_date + "'"
+					+ "," + 1 + ")";
 			System.out.println(insert1);
 
 			Statement st = conn.createStatement();
