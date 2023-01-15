@@ -16,6 +16,12 @@ public class main {
 			System.out.println("4:Make first 10 hotels 'is_Active' = false");
 			System.out.println("5Print hotel information by user input");
 			System.out.println("6:Guests who's name end with 'E'");
+			System.out.println("7:Rooms where guests are paying more than 1000");
+			System.out.println("8:Count of guests who are staing in 'DELUXE' rooms");
+			System.out.println("9:Guests who are staing in rooms and served by employee who have 'A' in their name");
+			System.out.println("10:All rooms which are not active but room type is 'Deluxe'");
+			System.out.println("11:All room type in hotels who's name have 'H' or are active but have more than 5 rooms.");
+			System.out.println("^exit^");
 			System.out.println("*******************");
 			
 			int select = sc.nextInt();
@@ -81,14 +87,33 @@ public class main {
 			case 6:
 				HotelManagement.guest();
 				break;
+//				HotelManagement.Roomswhereguestsarepaying();
+			case 7:
+				HotelManagement.paying();
+				break;
+				
+			case 8:
+				HotelManagement. CountGuests();
+				break;
+				
+			case 9:
+				HotelManagement.GuestshaveAName();
+				break;
+				
+			case 10:
+				HotelManagement.guestsDeluxe();
+				break;
+				
+			case 11:
+			break;
 			
-//			case 6:
-//				Hotel.exit();
-//				break;
+			case 12:
+				Hotel.exit();
+				break;
 //			
 //				
 //				
-//			case 7:
+//			case 12:
 ////				Hotel.deleteById();
 //				//Guests.readFromTable();
 //				System.out.println(" how many users you have to input");
